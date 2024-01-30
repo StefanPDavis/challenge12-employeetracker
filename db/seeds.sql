@@ -16,11 +16,11 @@ VALUES ("Marketing Manager", 35000, 1),
        ("Head of Security", 80000, 5);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Elliot", "Smith"),
-       ("Amira", "Afzal"),
-       ("Christoper", "Lee"),
-       ("Verónica", "Rodriguez"),
-       ("Igor", "Ivanov"),
-       ("John", "Doe"),
-       ("Bob", "Robertson"),
-       ("Steve", "Stevenson");
+VALUES ("Elliot", "Smith", 1, 1),
+       ("Amira", "Afzal", 2, NULL),
+       ("Christoper", "Lee", 3, NULL),
+       ("Verónica", "Rodriguez", 4, 2),
+       ("Igor", "Ivanov", 5, NULL),
+       ("John", "Doe", 6, 3),
+       ("Bob", "Robertson", 7, NULL),
+       ("Steve", "Stevenson", 8, 4);
