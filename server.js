@@ -26,6 +26,20 @@ const db = mysql.createConnection(
             console.table(result);
             editEmployeeList();
         });
+    }else if (answers.prompt === 'View All Roles') {
+        db.query(`SELECT * FROM role`, (err, result) => {
+            if (err) throw err;
+            console.log("Viewing All Roles: ");
+            console.table(result);
+            editEmployeeList();
+        });
+    } else if (answers.prompt === 'View All Employees') {
+        db.query(`SELECT * FROM employee`, (err, result) => {
+            if (err) throw err;
+            console.log("Viewing All Employees: ");
+            console.table(result);
+            editEmployeeList();
+        });
     }
     })
 };
