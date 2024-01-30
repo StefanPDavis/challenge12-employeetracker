@@ -15,7 +15,7 @@ VALUES ("Marketing Manager", 35000, 1),
        ("Security Officer", 35000, 5),
        ("Head of Security", 80000, 5);
 
-INSERT INTO employee (first_name, last_name)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Elliot", "Smith"),
        ("Amira", "Afzal"),
        ("Christoper", "Lee"),
