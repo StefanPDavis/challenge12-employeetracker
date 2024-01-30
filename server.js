@@ -11,7 +11,7 @@ const db = mysql.createConnection(
     console.log(`Connected to the employee_db database.`)
   );
 
-  let editEmployeeList = function () {
+  const editEmployeeList = function () {
     inquirer.prompt([{
         type: 'list',
         name: 'prompt',
@@ -43,3 +43,5 @@ const db = mysql.createConnection(
     }
     })
 };
+
+editEmployeeList();
