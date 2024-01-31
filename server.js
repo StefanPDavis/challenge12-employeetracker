@@ -117,6 +117,77 @@ const db = mysql.createConnection(
                 });
             })
         });
+    } else if (answers.prompt === 'Add An Employee') {
+        db.query(`SELECT * FROM employee, role`, (err, result) => {
+            if (err) throw err;
+
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'firstName',
+                    message: 'What is the employees first name?',
+                    validate: firstNameInput => {
+                        if (firstNameInput) {
+                            return true;
+                        } else {
+                            console.log('Please Add A First Name');
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: 'input',
+                    name: 'lastName',
+                    message: 'What is the employees last name?',
+                    validate: lastNameInput => {
+                        if (lastNameInput) {
+                            return true;
+                        } else {
+                            console.log('Please Add A Last Name');
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: 'list',
+                    name: 'role',
+                    message: 'What is the employees role?',
+                    choices: () => {
+                        var array = [];
+                        for (var i = 0; i < result.length; i++) {
+                            array.push(result[i].title);
+                        }
+                        var newArray = [...new Set(array)];
+                        return newArray;
+                    }
+                },
+                {
+                    type: 'input',
+                    name: 'manager',
+                    message: 'Enter the Manager ID of the person who manages this employees department',
+                    validate: managerInput => {
+                        if (managerInput) {
+                            return true;
+                        } else {
+                            console.log('Please Add A Manager ID');
+                            return false;
+                        }
+                    }
+                }
+            ]).then((answers) => {
+                for (var i = 0; i < result.length; i++) {
+                    if (result[i].title === answers.role) {
+                        var role = result[i];
+                    }
+                }
+
+                db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [answers.firstName, answers.lastName, role.id, answers.manager], (err, result) => {
+                    if (err) throw err;
+                    console.log(`Added ${answers.firstName} ${answers.lastName} to the database.`)
+                    editEmployeeList();
+                });
+            })
+        });
     }
     })
 };
