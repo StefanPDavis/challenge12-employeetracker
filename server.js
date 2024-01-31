@@ -234,7 +234,7 @@ const db = mysql.createConnection(
 
                 db.query(`UPDATE employee SET ? WHERE ?`, [{role_id: role}, {last_name: name}], (err, result) => {
                     if (err) throw err;
-                    console.log(`Updated ${answers.employee} role to the database.`)
+                    console.log(`Updated ${answers.employee}'s role to ${answers.role}.`)
                     editEmployeeList();
                 });
             })
