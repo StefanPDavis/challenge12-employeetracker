@@ -13,8 +13,8 @@ VALUES ("Marketing Assocaiate", 35000, 1),
        ("Security Officer", 35000, 5),
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Elliot", "Smith", 1, NULL),
+VALUES ("Elliot", "Smith", 1, 1),
        ("Amira", "Afzal", 2, 1),
        ("Christoper", "Lee", 3, 2),
-       ("Veronica", "Rodriguez", 4, NULL),
-       ("Igor", "Ivanov", 5, 3),
+       ("Veronica", "Rodriguez", 4, 3),
+       ("Igor", "Ivanov", 5, 4),
